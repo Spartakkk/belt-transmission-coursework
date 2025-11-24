@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расчёт ремённой передачи</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Проверочный расчёт ремённой передачи</h1>
+        
+        <form id="calcForm">
+            <label>
+                Выберите ремень из БД:
+                <select id="belt_select">
+                    <option value="">Загрузка...</option>
+                </select>
+            </label>
+
+            <div class="row">
+                <label>F (сила), Н: <input type="number" id="F" value="5000" step="100"></label>
+                <label>Z (число): <input type="number" id="Z" value="4" step="1"></label>
+            </div>
+
+            <div class="row">
+                <label>fi (сцепление): <input type="number" id="fi" value="1.1" step="0.05"></label>
+                <label>C1 (угол): <input type="number" id="C1" value="0.95" step="0.01"></label>
+            </div>
+
+            <div class="row">
+                <label>C3 (режим): <input type="number" id="C3" value="1.0" step="0.05"></label>
+                <label>v (скорость), м/с: <input type="number" id="v" value="15" step="0.5"></label>
+            </div>
+
+            <div class="row">
+                <label>X (снижение): <input type="number" id="X" value="0.15" step="0.05"></label>
+                <label>α₁ (обхват), °: <input type="number" id="alpha1" value="170"></label>
+            </div>
+
+            <div class="row">
+                <label>γ₁ (ветви), °: <input type="number" id="gamma1" value="0"></label>
+            </div>
+
+            <button type="submit">Рассчитать</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
