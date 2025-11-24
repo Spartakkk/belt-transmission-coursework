@@ -11,6 +11,7 @@
 - **Инструменты разработки**: VS Code, DBeaver, Git
 
 ## Структура проекта
+```
 belt-transmission-coursework/
 ├── backend/
 │   ├── app.py              # Основной сервер FastAPI
@@ -23,7 +24,7 @@ belt-transmission-coursework/
 │   └── styles.css
 ├── .gitignore
 └── README.md
-
+```
 ## Установка и запуск
 
 ### Что должно быть установлено:
