@@ -8,16 +8,20 @@ import math
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+if os.path.exists(".env"):
+    load_dotenv()
 
 app = FastAPI(title="Ремённая передача с БД — курсовая")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 def get_db():
     return psycopg2.connect(
-        host=os.getenv("DB_HOST"), port=os.getenv("DB_PORT"),
-        database=os.getenv("DB_NAME"), user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"), cursor_factory=RealDictCursor
+        host=os.getenv("DB_HOST", "localhost"),      # в Docker переопределится
+        port=os.getenv("DB_PORT", "5432"),
+        database=os.getenv("DB_NAME", "chain_db"),
+        user=os.getenv("DB_USER", "postgres"),
+        password=os.getenv("DB_PASSWORD", "secretpass"),  # в Docker будет secretpass
+        cursor_factory=RealDictCursor
     )
 
 # Получить список ремней для фронтенда

@@ -1,0 +1,46 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: belt_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: chain_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secretpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    container_name: belt_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: chain_db
+      DB_USER: postgres
+      DB_PASSWORD: secretpass
+    command: >
+      sh -c "
+      sleep 10 &&
+      python backend/init_db.py &&
+      uvicorn backend.app:app --host 0.0.0.0 --port 8000 --reload
+      "
+
+  frontend:
+    image: nginx:alpine
+    container_name: belt_frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

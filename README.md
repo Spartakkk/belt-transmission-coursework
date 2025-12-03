@@ -11,6 +11,7 @@
 - **Инструменты разработки**: VS Code, DBeaver, Git
 
 ## Структура проекта
+```
 belt-transmission-coursework/
 ├── backend/
 │   ├── app.py              # Основной сервер FastAPI
@@ -23,9 +24,10 @@ belt-transmission-coursework/
 │   └── styles.css
 ├── .gitignore
 └── README.md
-
+```
 ## Установка и запуск
 
+### Вариант 1 — локально
 ### Что должно быть установлено:
 1. Python 3.9–3.12
 2. PostgreSQL 13+
@@ -33,7 +35,7 @@ belt-transmission-coursework/
 4. (Рекомендуется) VS Code + расширения: Python, Live Server
 
 ### Пошаговая инструкция:
-```bash
+```
 # 1. Клонировать репозиторий
 git clone https://github.com/ТВОЙ_НИК/belt-transmission-coursework.git
 cd belt-transmission-coursework
@@ -65,3 +67,16 @@ python init_db.py
 uvicorn app:app --reload
 
 # 7. Открыть frontend/index.html через Live Server (или двойным кликом)
+```
+
+### Вариант 2 — через Docker
+```
+# 1. Склонировать проект
+git clone https://github.com/ТВОЙ_НИК/chain-transmission-project.git
+cd chain-transmission-project
+
+# 2. Запустить всё одной командой
+docker-compose up --build
+
+# 3. Открыть frontend/index.html через Live Server 
+```
