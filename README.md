@@ -67,6 +67,7 @@ python init_db.py
 uvicorn app:app --reload
 
 # 7. Открыть frontend/index.html через Live Server (или двойным кликом)
+``` 
 
 ### Вариант 2 — через Docker
 ```
